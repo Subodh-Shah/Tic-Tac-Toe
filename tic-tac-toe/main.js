@@ -71,24 +71,23 @@ function renderDom() {
 	gameBoardDiv.innerHTML = ''; // Clear the board for re-render
 
 	// Display current player's turn
-	const isCellEmpty = game.board.map((row) =>
-		row.map((col) => col.getValue()).includes('')
-	);
-	console.log(game.board);
-
-	isCellEmpty.includes(true)
-		? (showActivePlayer.textContent = game.printNewPlayer())
-		: (showActivePlayer.textContent = `It's a Tie`);
+	const isTie = game.board.flat().every((cell) => !cell.isEmpty());
+	showActivePlayer.textContent = isTie ? `It's a Tie` : game.printNewPlayer();
 
 	// Render the game board
 	game.board.forEach((row, rowIndex) => {
 		row.forEach((col, colIndex) => {
-			const cellDiv = document.createElement('div');
-			cellDiv.classList.add('cell');
+			let cellDiv = gameBoardDiv.querySelector(
+				`[data-row="${rowIndex}"][data-col="${colIndex}"]`
+			);
+			if (!cellDiv) {
+				cellDiv = document.createElement('div');
+				cellDiv.classList.add('cell');
+				cellDiv.dataset.row = rowIndex;
+				cellDiv.dataset.col = colIndex;
+				gameBoardDiv.appendChild(cellDiv);
+			}
 			cellDiv.textContent = col.getValue(); // Display cell value
-			cellDiv.dataset.row = rowIndex;
-			cellDiv.dataset.col = colIndex;
-			gameBoardDiv.appendChild(cellDiv);
 		});
 	});
 }
@@ -105,6 +104,11 @@ function setupEventListeners() {
 	});
 }
 
+function winCondition() {
+	let winConditions = [];
+}
+
 // Initial setup
 renderDom();
 setupEventListeners();
+winCondition();
