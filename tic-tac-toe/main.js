@@ -31,7 +31,7 @@ function gameBoard() {
 }
 
 // GameController module - manages game logic, players, and turn changes
-function gameController(playerOne = 'Subodh Shah', playerTwo = 'Samit Shah') {
+function gameController(playerOne = 'Subodh', playerTwo = 'Samit') {
 	const board = gameBoard();
 	const players = [
 		{ name: playerOne, symbol: 'O' },
@@ -52,7 +52,7 @@ function gameController(playerOne = 'Subodh Shah', playerTwo = 'Samit Shah') {
 		return success;
 	};
 
-	const printNewPlayer = () => `It's ${getActivePlayer().name}'s turn`;
+	const printNewPlayer = () => `${getActivePlayer().name}'s turn`;
 
 	return {
 		playRound,
@@ -71,7 +71,14 @@ function renderDom() {
 	gameBoardDiv.innerHTML = ''; // Clear the board for re-render
 
 	// Display current player's turn
-	showActivePlayer.textContent = game.printNewPlayer();
+	const isCellEmpty = game.board.map((row) =>
+		row.map((col) => col.getValue()).includes('')
+	);
+	console.log(game.board);
+
+	isCellEmpty.includes(true)
+		? (showActivePlayer.textContent = game.printNewPlayer())
+		: (showActivePlayer.textContent = `It's a Tie`);
 
 	// Render the game board
 	game.board.forEach((row, rowIndex) => {

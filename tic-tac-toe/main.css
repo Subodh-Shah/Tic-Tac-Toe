@@ -22,7 +22,7 @@ a {
 
 /* Main Styles */
 
-.container {
+#game-container {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -34,28 +34,55 @@ a {
 
 .active {
 	background: #000;
-	width: 70vw;
-	height: 10vh;
+	width: 40vw;
+	height: 8vh;
 	color: white;
 	display: flex;
 	justify-content: center;
 	letter-spacing: 4px;
 	align-items: center;
-	font-size: 1.75rem;
+	font-size: 2rem;
 	padding: 1rem;
 }
 
 .board {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
 	width: 70vw;
-	height: 50vh;
+	height: 70vh;
 }
 
-.board > * {
+.board .cell {
 	border: 2px solid black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 2.5rem;
+	max-height: 100%;
+	font-size: 3rem;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+	.active {
+		height: 8vh;
+		letter-spacing: 2px;
+		align-items: center;
+		font-size: 1rem;
+		padding: 1rem;
+	}
+
+	.board {
+		height: 40vh;
+	}
+
+	.board .cell {
+		font-size: 2rem;
+	}
+}
+
+@media screen and (max-height: 768px) {
+	.active {
+		height: 10vh;
+	}
 }
