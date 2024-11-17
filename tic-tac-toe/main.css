@@ -20,7 +20,47 @@ a {
 	color: black;
 }
 
-/* Main Styles */
+/* Main Form Styles */
+
+#form-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #494949;
+	height: 100vh;
+}
+
+#form {
+	padding: 32px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-self: center;
+	justify-content: center;
+	gap: 16px;
+	border-radius: 16px;
+	background-color: #f2f2f2;
+}
+
+input {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 3px solid #ccc;
+	box-sizing: border-box;
+}
+
+#form .form-button {
+	width: fit-content;
+	height: fit-content;
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	font-size: 1.25rem;
+}
 
 #game-container {
 	display: flex;
@@ -30,19 +70,40 @@ a {
 	width: 100vw;
 	align-items: center;
 	gap: 1rem;
+	display: none;
+}
+
+.container-top {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	min-width: 70vw;
+	gap: 8px;
+}
+
+.container-top button {
+	width: fit-content;
+	height: fit-content;
+	padding: 8px;
+	border-radius: 8px;
+	cursor: pointer;
+	background-color: black;
+	color: white;
+	font-size: 1.25rem;
 }
 
 .active {
 	background: #000;
-	width: 40vw;
-	height: 8vh;
-	color: white;
+	width: fit-content;
+	height: fit-content;
 	display: flex;
+	align-items: center;
+	color: white;
 	justify-content: center;
 	letter-spacing: 4px;
-	align-items: center;
 	font-size: 2rem;
-	padding: 1rem;
+	padding: 8px 1.5rem;
+	border-radius: 8px;
 }
 
 .board {
@@ -64,12 +125,16 @@ a {
 }
 
 @media screen and (max-width: 768px) {
+	.container-top button {
+		font-size: 14px;
+		border-radius: 8px;
+	}
+
 	.active {
-		height: 8vh;
 		letter-spacing: 2px;
 		align-items: center;
 		font-size: 1rem;
-		padding: 1rem;
+		padding: 1rem 1.5rem;
 	}
 
 	.board {
@@ -78,11 +143,5 @@ a {
 
 	.board .cell {
 		font-size: 2rem;
-	}
-}
-
-@media screen and (max-height: 768px) {
-	.active {
-		height: 10vh;
 	}
 }

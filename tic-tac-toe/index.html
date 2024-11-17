@@ -7,14 +7,58 @@
 		<link rel="stylesheet" href="main.css" />
 	</head>
 	<body>
+		<div id="form-container">
+			<form action="#" id="form">
+				<div class="player-one">
+					<label for="player-one-name">Player One:</label>
+					<input
+						type="text"
+						id="player-one-name"
+						class="player-one-name"
+						name="PlayerOneName"
+						required />
+					<label for="player-one-symbol">Symbol:</label>
+					<input
+						type="text"
+						id="player-one-symbol"
+						class="player-one-symbol"
+						name="PlayerOneSymbol"
+						required />
+				</div>
+				<div class="player-two">
+					<label for="player-two-name">Player Two:</label>
+					<input
+						type="text"
+						id="player-two-name"
+						class="player-two-name"
+						name="PlayerTwoName"
+						required />
+					<label for="player-two-symbol">Symbol:</label>
+					<input
+						type="text"
+						id="player-two-symbol"
+						class="player-two-symbol"
+						name="PlayerTwoSymbol"
+						required />
+				</div>
+				<button title="Submit" type="submit" class="form-button">
+					Play
+				</button>
+			</form>
+		</div>
 		<div id="game-container">
-			<p class="active">
-				<!-- Active Player go here -->
-			</p>
+			<div class="container-top">
+				<p class="active">
+					<!-- Active Player go here -->
+				</p>
+				<button class="reset-button">Reset</button>
+				<button class="restart-button">Restart</button>
+			</div>
 			<div class="board">
 				<!-- Cells go here -->
 			</div>
 		</div>
-		<script src="main.js"></script>
+
+		<script type="module" src="main.js"></script>
 	</body>
 </html>
